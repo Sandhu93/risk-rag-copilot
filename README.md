@@ -1,8 +1,8 @@
 # RiskRAG Copilot
 
-Starter template for a risk/compliance Retrieval-Augmented Generation (RAG) copilot.
+In development of a risk/compliance Retrieval-Augmented Generation (RAG) copilot.
 
-## What this template includes
+## What it includes
 
 - FastAPI backend scaffold
 - Modular service layer for:
@@ -45,7 +45,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-## Suggested build order
+## build order
 
 1. Implement ingestion pipeline (`app/services/ingestion.py`)
 2. Add embeddings + vector DB (`app/services/retrieval.py`)

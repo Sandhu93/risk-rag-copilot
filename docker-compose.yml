@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./backend
+    container_name: risk-rag-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+
+  db:
+    image: postgres:16
+    container_name: risk-rag-db
+    environment:
+      POSTGRES_DB: riskrag
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/app/db/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+
+volumes:
+  postgres_data:
